@@ -15,6 +15,7 @@
 	</head>
 	<body>
 		<select id="song" onchange="changeSong()">
+			<option value="No song selected"></option>
 	    <option value="Barracuda">Barracuda</option>
 	    <option value="Cascade">Cascade</option>
 	    <option value="Cheat Codes">Cheat Codes</option>
@@ -104,10 +105,17 @@
 		function changeSong() {
 			var selectedSong = document.getElementById("song").value;
 			var audio = document.getElementById("audio");
-			audio.src = "Music/" + selectedSong + ".mp3";
+			if (selectedSong != "No song selected") {
+				audio.src = "Music/" + selectedSong + ".mp3";
+			}
 			var artist, album;
 			document.getElementById("title").innerHTML = selectedSong;
 			switch (selectedSong) {
+				case "No song selected":
+					artist = "\xa0";
+					album = "\xa0";
+					length = [0,00,000];
+					break;
 				case "Barracuda":
 					artist = "Noisestorm";
 					album  = "Monstercat 022 - Contact";
